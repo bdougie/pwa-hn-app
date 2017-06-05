@@ -8,7 +8,7 @@ const StoryItem = ({ item }) => {
   if(item && !item.isFetching){
     content = (
       <p>
-        <a href={item.url} target="_blank">
+        <a rel="noopener" href={item.url} target="_blank">
           {item.title}
         </a>
         {item.url &&
