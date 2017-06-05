@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ContentLoader from 'react-content-loader'
 
 const NEWS_PER_PAGE = 30;
 
@@ -140,14 +141,15 @@ class App extends Component {
         </div>
         <div className="App-container">
 
-          {isFetching && <h2>Fetching Top Stories ... </h2>}
+          {isFetching ? <ContentLoader type="code" />
 
-          <ol start={start}>
+         : <ol start={start}>
             {currentStories.map( id => {
               let item = loadedStories[id];
               return <StoryItem item={item} key={id}/>;
             })}
           </ol>
+          }
 
           <Pagination currentPage={page} goToPage={(page) => this.goToPage(page)}/>
         </div>
