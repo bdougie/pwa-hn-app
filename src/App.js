@@ -141,14 +141,15 @@ class App extends Component {
         </div>
         <div className="App-container">
 
-          {isFetching && <ContentLoader type="facebook" />}
+          {isFetching ? <ContentLoader type="facebook" />
 
-          <ol start={start}>
+         : <ol start={start}>
             {currentStories.map( id => {
               let item = loadedStories[id];
               return <StoryItem item={item} key={id}/>;
             })}
           </ol>
+          }
 
           <Pagination currentPage={page} goToPage={(page) => this.goToPage(page)}/>
         </div>
